@@ -1,0 +1,36 @@
+{
+  "books": [
+    {
+      "title": "hỗ trợ học HTML",
+      "bookId": "Jw-c0k9-m"
+    },
+    {
+      "title": "New York",
+      "bookId": "2YdD-ArK7"
+    }
+  ],
+  "users": [
+    {
+      "name": "Nguyễn Đức Nhân",
+      "userId": "cS5xlsbwv"
+    },
+    {
+      "name": "Tú",
+      "userId": "1SmX3oCrX"
+    }
+  ],
+  "transactions": [
+    {
+      "userId": "Nguyễn Đức Nhân",
+      "bookId": "hỗ trợ học HTML"
+    },
+    {
+      "userId": "Tài",
+      "bookId": "TÁM THÁNG BA CỦA ITERS"
+    },
+    {
+      "userId": "Tú",
+      "bookId": "hỗ trợ học css"
+    }
+  ]
+}
