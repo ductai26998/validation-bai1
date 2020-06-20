@@ -22,7 +22,7 @@ module.exports.create = (request, response) => {
 }
 
 module.exports.postCreate = (request, response) => {
-  request.body.userId = shortid.generate();
+  request.body.id = shortid.generate();
   db.get('users').push(request.body).write();
   response.redirect('/users');
 };
@@ -34,13 +34,13 @@ module.exports.delete = (request, response) => {
 };
 
 module.exports.update = (request, response) => {
-  response.render('users/update', {userId: request.params.userId});
+  response.render('users/update', {id: request.params.id});
 };
 
 module.exports.postUpdate = (request, response) => {
-  var userId = request.params.userId;
+  var userId = request.params.id;
   db.get('users')
-    .find({userId: userId})
+    .find({id: userId})
     .assign({name: request.body.name})
     .write();
   response.redirect('/users');

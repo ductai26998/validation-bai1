@@ -8,11 +8,15 @@ body
   ul
     each transaction in transactions
       li
-        span= transaction.userId
+        span= getUserById(transaction.userId).name
         span= "====="
-        span= transaction.bookId
+        span= getBookById(transaction.bookId).title
+        button
+          a(href="/transactions/" + transaction.id + "/complete") COMPLETE
 
   button
     a(href="/transactions/create") ADD TRANSACTION
+
+
 
 

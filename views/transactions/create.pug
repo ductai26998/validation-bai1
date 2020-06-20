@@ -8,11 +8,11 @@ body
     label(for="user") user
     select(name="userId", id="user")
       each user in users
-        option= user.name
+        option= user.id
     br
     label(for="book") book
     select(name="bookId", id="book")
       each book in books
-        option= book.title
+        option= book.id
     button ADD
     

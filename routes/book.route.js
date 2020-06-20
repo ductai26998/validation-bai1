@@ -13,11 +13,11 @@ router.get('/create', controller.create);
 
 router.post('/create', controller.postCreate);
 
-router.get("/:bookId/delete", controller.delete);
+router.get("/:id/delete", controller.delete);
 
-router.get('/:bookId/update', controller.update);
+router.get('/:id/update', controller.update);
 
-router.post('/:bookId/update', controller.postUpdate);
+router.post('/:id/update', controller.postUpdate);
 
 
 module.exports = router;

@@ -22,7 +22,7 @@ module.exports.create = (request, response) => {
 };
 
 module.exports.postCreate = (request, response) => {
-  request.body.bookId = shortid.generate();
+  request.body.id = shortid.generate();
   db.get('books').push(request.body).write();
   response.redirect('/');
 };
@@ -33,13 +33,13 @@ module.exports.delete = (request, response) => {
 };
 
 module.exports.update = (request, response) => {
-  response.render('books/update', {bookId: request.params.bookId});
+  response.render('books/update', {id: request.params.id});
 };
 
 module.exports.postUpdate = (request, response) => {
-  var bookId = request.params.bookId;
+  var bookId = request.params.id;
   db.get('books')
-    .find({bookId: bookId})
+    .find({id: bookId})
     .assign({title: request.body.title})
     .write();
   response.redirect('/');

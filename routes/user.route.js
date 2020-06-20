@@ -12,11 +12,11 @@ router.get('/create', controller.create);
 
 router.post('/create', controller.postCreate);
 
-router.get("/:userId/delete", controller.delete);
+router.get("/:id/delete", controller.delete);
 
-router.get('/:userId/update', controller.update);
+router.get('/:id/update', controller.update);
 
-router.post('/:userId/update', controller.postUpdate);
+router.post('/:id/update', controller.postUpdate);
 
 
 module.exports = router;
