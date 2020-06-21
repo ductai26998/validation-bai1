@@ -1,7 +1,5 @@
 extends ../layouts/common
 block content
-  a(href="/books")
-    h1 LIBRARY
 block header
     form(class="d-flex" action="/books/search",method="GET")
       input(class="form-control" type="text", name="q")
