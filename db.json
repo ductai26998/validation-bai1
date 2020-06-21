@@ -1,7 +1,7 @@
 {
   "books": [
     {
-      "title": "hỗ trợ học css",
+      "title": "hỗ trợ học HTML",
       "id": "Hgx8azKYY"
     }
   ],
@@ -9,10 +9,6 @@
     {
       "name": "Nguyễn Đức Nhân",
       "id": "N6YTTrB_Z"
-    },
-    {
-      "name": "",
-      "id": "uem87lqBW"
     }
   ],
   "transactions": [
@@ -20,6 +16,12 @@
       "userId": "N6YTTrB_Z",
       "bookId": "Hgx8azKYY",
       "id": "ICbdJCPYL",
+      "isComplete": "false"
+    },
+    {
+      "userId": "N6YTTrB_Z",
+      "bookId": "Hgx8azKYY",
+      "id": "JlfRHjhfu",
       "isComplete": "false"
     }
   ]
