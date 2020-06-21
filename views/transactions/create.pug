@@ -1,23 +1,23 @@
 extends ../layouts/common
 block content
 block header
-  
-  a(href="/books")
-    h1 LIBRARY
-  h2 ADD USER
-  form(action="/transactions/create", method="POST")
-    div(class="d-flex")  
-      div(class="input-group-prepend")
-        label(for="user" class="input-group-text" id="inputGroup-sizing-default") User
-      select(class="btn btn-secondary dropdown-toggle" name="userId", id="user")
-        each user in users
-          option= user.id
-    br
-    div(class="d-flex")  
-      div(class="input-group-prepend")
-        label(for="book" class="input-group-text" id="inputGroup-sizing-default") Book
-      select(class="btn btn-secondary dropdown-toggle" name="bookId", id="book")
-        each book in books
-          option= book.id    
-    button(class="btn btn-primary m-2") ADD
+  h2.text-center ADD TRANSACTION
+  .container-sm
+    form.d-flex.flex-column(action="/transactions/create", method="POST")
+      .container-sm.w-50.d-flex.flex-row.mt-3
+        div(class="d-flex ml-3")  
+          div(class="input-group-prepend")
+            label(for="user" class="input-group-text" id="inputGroup-sizing-default") User
+          select(class="btn btn-secondary dropdown-toggle" name="userId", id="user")
+            each user in users
+              option= user.id       
+        div(class="d-flex ml-3")  
+          div(class="input-group-prepend")
+            label(for="book" class="input-group-text" id="inputGroup-sizing-default") Book
+          select(class="btn btn-secondary dropdown-toggle" name="bookId", id="book")
+            each book in books
+              option= book.id    
+        button(class="btn btn-primary ml-3") ADD
+
+
       

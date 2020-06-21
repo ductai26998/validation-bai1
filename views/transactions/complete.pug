@@ -1,7 +1,8 @@
 extends ../layouts/common
 block content
 block header
-	form(action="/transactions/" + id + "/complete" method="POST")
-		input(type="checkbox" name="isComplete" value="true")
-		label(for="isComplete") Complete
-		input(type="submit" value="Submit")
+	.container-sm
+		form(action="/transactions/" + id + "/complete" method="POST")
+			input.mr-2(type="checkbox" name="isComplete" value="true")
+			label(for="isComplete") Complete
+			button(class="btn btn-primary ml-2") SUBMIT

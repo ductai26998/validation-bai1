@@ -1,8 +1,9 @@
 extends ../layouts/common
 block content
 block header
-	form(class="d-flex" action="/books/create" method="POST")
-		div(class="input-group-prepend")
-			span(class="input-group-text" id="inputGroup-sizing-default") Book's title
-		input(type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="title")
-		button(class="btn btn-primary ml-2") ADD
+	.container-sm.m-5
+		form(class="d-flex" action="/books/create" method="POST")
+			div(class="input-group-prepend")
+				span(class="input-group-text" id="inputGroup-sizing-default") Book's title
+			input(type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="title")
+			button(class="btn btn-primary ml-2") ADD

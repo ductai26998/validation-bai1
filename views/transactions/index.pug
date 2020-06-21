@@ -1,34 +1,28 @@
-//- extends ../layouts/common
-//- block content  
-  
-//-   a(href="/books")
-//-     h1 LIBRARY
-//-   h2 TRANSACTIONS
-
-//-   ul
-//-     each transaction in transactions
-//-       li
-//-         span= getUserById(transaction.userId).name
-//-         span= "====="
-//-         span= getBookById(transaction.bookId).title
-//-         button
-//-           a(href="/transactions/" + transaction.id + "/complete") COMPLETE
-
-//-   button
-//-     a(href="/transactions/create") ADD TRANSACTION
-
-
 extends ../layouts/common
 block content
 block header
 
-  ul(class="list-group")
-    each transaction in transactions
-      li(class="list-group-item")
-        span(class="float-left")= getUserById(transaction.userId).name
-        span
-          a(class="btn btn-success m-2 float-right" role="button" href="/transactions/" + transaction.id + "/complete") COMPLETE
-        span(class="float-right")= getBookById(transaction.bookId).title
-  a(class="btn btn-primary m-2" role="button" href="/transactions/create") ADD TRANSACTION
-
-
+	h2.text-center TRANSACTIONS
+	.container-sm
+		if error
+			.alert.alert-danger= error
+		table.table
+			thead.thead-dark
+				tr
+					th(scope='col') ID
+					th(scope='col') USER
+					th(scope='col') BOOK
+					th(scope='col')
+					th(scope='col') COMPLETED
+			tbody
+			each transaction in transactions
+				tr
+					th(scope='row')= transaction.id
+					td= getUserById(transaction.userId).name
+					td= getBookById(transaction.bookId).title
+					td
+						a(class="btn btn-success" role="button" href="/transactions/" + transaction.id + "/complete") COMPLETE
+					if transaction.isComplete === "true"
+						td
+							img(src='https://img.icons8.com/fluent/48/000000/checked-2.png')
+		a(class="btn btn-primary m-2" role="button" href="/transactions/create") ADD TRANSACTION

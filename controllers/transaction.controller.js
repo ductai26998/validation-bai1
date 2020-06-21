@@ -8,8 +8,8 @@ module.exports.get = (request, response) => {
       return db.get('users').find({ id: userId }).value();
     },
     getBookById: function(bookId) {
-      return db.get('books').find({ id: bookId }).value()
-    },
+      return db.get('books').find({ id: bookId }).value();
+    }
   });
 };
 
@@ -24,13 +24,47 @@ module.exports.postCreate = (request, response) => {
   request.body.id = shortid.generate();
   request.body.isComplete = "false";
   db.get('transactions').push(request.body).write();
-  response.redirect('/');
+  response.redirect('/transactions');
 };
 
 module.exports.complete = (request, response) => {
-  response.render('transactions/complete', {
-    id: request.params.id
-  });
+  var id = request.params.id;
+  var error = '';
+  for (var transaction of db.get('transactions')) {
+    if (transaction.id === id) {
+      if (db.get('transactions').find({id: id}).value().isComplete === "true") {
+        error = 'Transaction was completed !';
+        response.render('transactions/index', {
+          error: error,
+          transactions: db.get('transactions').value(),
+          getUserById: function(userId) {
+            return db.get('users').find({ id: userId }).value();
+          },
+          getBookById: function(bookId) {
+            return db.get('books').find({ id: bookId }).value()
+          }
+        });
+      }
+      response.render('transactions/complete', {
+        id: request.params.id,
+        error: error
+      });
+    } else {
+      error = 'Transaction is invalid !';
+    }
+  }
+  if (error) {
+    response.render('transactions/index', {
+      error: error,
+      transactions: db.get('transactions').value(),
+      getUserById: function(userId) {
+        return db.get('users').find({ id: userId }).value();
+      },
+      getBookById: function(bookId) {
+        return db.get('books').find({ id: bookId }).value()
+      }
+    });
+  }
 };
 
 module.exports.postComplete = (request, response) => {
@@ -39,6 +73,6 @@ module.exports.postComplete = (request, response) => {
     .find({id: id})
     .assign({isComplete: request.body.isComplete})
     .write();
-  response.redirect('/');
+  response.redirect('/transactions');
 };
 
