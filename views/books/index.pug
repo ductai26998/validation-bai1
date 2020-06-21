@@ -1,28 +1,20 @@
-head
-  link(rel="stylesheet", href="/style.css")  
-body
+extends ../layouts/common
+block content
   a(href="/books")
     h1 LIBRARY
-  form(action="/books/search",method="GET")
-    input(type="text", name="q")
-    button SEARCH
+block header
+    form(class="d-flex" action="/books/search",method="GET")
+      input(class="form-control" type="text", name="q")
+      button(class="btn btn-primary ml-2") SEARCH
 
-  ul
-    each book in books
-      li
-        span= book.title
-        span 
-        button
-          a(href="/books/" + book.id + "/delete") DELETE
-        button
-          a(href="/books/" + book.id + "/update") UPDATE
-  button
-    a(href="/books/create") ADD BOOK
-  br
-  br
-  button
-    a(href="/users") GOTO USERS
-  br
-  button
-    a(href="/transactions") GOTO TRANSACTIONS
+    ul(class="list-group")
+      each book in books
+        li(class="list-group-item")
+          span= book.title
+          span(class="")
+            a(class="btn btn-danger btn btn-primary m-2 float-right" role="button" href="/books/" + book.id + "/delete") DELETE
+            a(class="btn btn-primary m-2 float-right" role="button" href="/books/" + book.id + "/update") UPDATE
+    a(class="btn btn-primary m-2" role="button" href="/books/create") ADD BOOK
+    a(class="btn btn-primary m-2" role="button" href="/users") GOTO USERS
+    a(class="btn btn-primary m-2" role="button" href="/transactions") GOTO TRANSACTIONS
 

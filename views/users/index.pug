@@ -1,26 +1,18 @@
-head
-  link(rel="stylesheet", href="/style.css")  
-body
+extends ../layouts/common
+block content
   a(href="/books")
     h1 LIBRARY
-  a(href="/users")
-    h1 USERS
+block header
+  form(class="d-flex" action="/books/search",method="GET")
+    input(class="form-control" type="text", name="q")
+    button(class="btn btn-primary ml-2") SEARCH
 
-  form(action="/users/search",method="GET")
-    input(type="name", name="q")
-    button SEARCH
-
-  ul
+  ul(class="list-group")
     each user in users
-      li
+      li(class="list-group-item")
         span= user.name
-        span 
-        button
-          a(href="/users/" + user.id + "/delete") DELETE
-        button
-          a(href="/users/" + user.id + "/update") UPDATE
-
-  button
-    a(href="/users/create") ADD USER
-
+        span
+          a(class="btn btn-danger btn btn-primary m-2 float-right" role="button" href="/users/" + user.id + "/delete") DELETE
+          a(class="btn btn-primary m-2 float-right" role="button" href="/users/" + user.id + "/update") UPDATE
+  a(class="btn btn-primary m-2" role="button" href="/users/create") ADD USER
 
